@@ -124,7 +124,7 @@ public class ChaosBladeForCloud extends ChaosBase {
      */
     public Response<K8sResultBean> createK8sExpForCloud(ModelArgs modelArgs, String ak, String sk, String vpcId,
                                                         String tag) {
-        modelArgs.getFlags().put("waiting-time", "0.5s");
+        modelArgs.getFlags().put("waiting-time", CliUtil.DEFAULT_FLAGS_K8S_WAITING_TIME);
         String command = CliUtil.buildExpCmd(Blade.CREATE, modelArgs);
         Request request = RequestUtil.createRequest(modelArgs.getMachine(), modelArgs.getPort(), modelArgs.getMachineType(), ak, sk,
                 command);

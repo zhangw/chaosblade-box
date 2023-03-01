@@ -23,6 +23,8 @@ public class CliUtil {
 
     public static final String ENVIRONMENT_OS = "os";
     public static final String ENVIRONMENT_JAVA = "java";
+
+    public static final String DEFAULT_FLAGS_K8S_WAITING_TIME = System.getProperty("exp.model-args.flags.k8s.waiting-time", "20s");
     /**
      * 转换模型为 chaosblade cli 参数
      *
