@@ -25,6 +25,8 @@ public class CliUtil {
     public static final String ENVIRONMENT_JAVA = "java";
 
     public static final String DEFAULT_FLAGS_K8S_WAITING_TIME = System.getProperty("exp.model-args.flags.k8s.waiting-time", "20s");
+
+    public static final String ENABLE_MATCHER_FLAGS_SCRIPT_CONTENT_BASE64_ENCODE = System.getProperty("exp.model-args.matcher-flags.script-content.base64-encode", "N");
     /**
      * 转换模型为 chaosblade cli 参数
      *
@@ -92,7 +94,9 @@ public class CliUtil {
 
     private static String base64encodeScriptContent(String key, String value) {
         if ("filter-script-content".equals(key) || "script-content".equals(key)) {
-            return Base64Util.encode(value.getBytes(Charset.forName("UTF-8")), false);
+            if (!"N".equals(ENABLE_MATCHER_FLAGS_SCRIPT_CONTENT_BASE64_ENCODE)) {
+                return Base64Util.encode(value.getBytes(Charset.forName("UTF-8")), false);
+            }
         }
         return value;
     }

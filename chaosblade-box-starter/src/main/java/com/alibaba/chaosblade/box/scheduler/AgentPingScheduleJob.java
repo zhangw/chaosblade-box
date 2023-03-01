@@ -88,7 +88,7 @@ public class AgentPingScheduleJob extends BaseJob implements Job, InitializingBe
                     collect(Collectors.toList());
 
 
-            log.info("[AgentPingScheduleJob] page:{}, totalPage: {}, total: {}",
+            log.debug("[AgentPingScheduleJob] page:{}, totalPage: {}, total: {}",
                     page,deviceDOPageableResponse.getPages(), deviceDOPageableResponse.getTotal());
             if(page >= deviceDOPageableResponse.getPages()) {
                 break;
@@ -105,7 +105,7 @@ public class AgentPingScheduleJob extends BaseJob implements Job, InitializingBe
                 log.info("[AgentPingScheduleJob] future error", e);
             }
         }
-        log.info("[AgentPingScheduleJob] time: {} ", System.currentTimeMillis() - time);
+        log.debug("[AgentPingScheduleJob] time: {} ", System.currentTimeMillis() - time);
     }
 
     private Boolean pingAgent (DeviceDO deviceDO) {
